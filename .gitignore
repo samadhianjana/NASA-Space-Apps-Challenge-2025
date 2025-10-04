@@ -1,0 +1,132 @@
+# -----------------------------
+# OS / Editor junk
+# -----------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+*.swp
+*.swo
+*.orig
+*.tmp
+~$*
+.vscode/
+.idea/
+*.iml
+
+# -----------------------------
+# Git / diff tools
+# -----------------------------
+*.diff
+*.patch
+
+# -----------------------------
+# Env & secrets
+# -----------------------------
+.env
+.env.*
+*.env
+*.env.local
+**/.env
+**/.env.*
+**/*.env
+secrets/*.json
+secrets/*.yaml
+secrets/*.yml
+
+# -----------------------------
+# Logs
+# -----------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# -----------------------------
+# Node / Frontend (Vite + TS)
+# -----------------------------
+node_modules/
+dist/
+build/
+.eslintcache
+.stylelintcache
+.turbo/
+.next/
+out/
+.cache/
+*.tsbuildinfo
+coverage/
+.playwright/
+.vite/
+.sass-cache/
+*.local
+
+# If you keep a local env file per app:
+frontend/.env
+frontend/.env.*
+
+# -----------------------------
+# Python / FastAPI backend
+# -----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging / build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+.installed.cfg
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Type checkers / linters
+.mypy_cache/
+.pytype/
+.pyre/
+ruff_cache/
+
+# Jupyter / notebooks (if any)
+.ipynb_checkpoints/
+
+# SQLite or local dev DBs (optional)
+*.sqlite
+*.sqlite3
+db.sqlite3
+
+# If you keep a local env file per app:
+backend/.env
+backend/.env.*
+
+# -----------------------------
+# Docker / Compose (optional)
+# -----------------------------
+docker-data/
+docker-volume-*/
+**/docker/*.local.yml
+docker-compose.override.yml
+
+# -----------------------------
+# Misc caches
+# -----------------------------
+.cache/
+.parcel-cache/
+.pnp.*
+.pnpm-store/
