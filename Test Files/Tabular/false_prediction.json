@@ -1,0 +1,13 @@
+{
+    "koi_period": 1.736952,
+    "koi_period_err1": 2.63e-07,
+    "koi_period_err2": -2.63e-07,
+    "koi_time0bk": 170.3076,
+    "koi_time0bk_err1": 0.000115,
+    "koi_time0bk_err2": -0.000115,
+    "koi_impact": 1.276,
+    "koi_impact_err1": 0.115,
+    "koi_impact_err2": -0.092,
+    "koi_duration": 2.40641,
+    "koi_duration_err1": 0.00537
+}

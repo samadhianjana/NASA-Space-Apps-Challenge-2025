@@ -1,25 +1,38 @@
-import { z } from 'zod';
+// src/lib/schemas/tabular.ts
+import { z } from "zod";
 
-// Accepts any key -> number (coerces number-like strings)
-export const FeatureRowSchema = z
-  .record(
-    z.union([z.string(), z.number()]),
-    z.union([
-      z.number(),
-      z.string().transform((v, ctx) => {
-        const n = Number(v);
-        if (Number.isNaN(n)) {
-          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Not a number' });
-          return z.NEVER;
-        }
-        return n;
-      })
-    ])
-  )
-  .transform((obj) => {
-    const out: Record<string, number> = {};
-    for (const [k, v] of Object.entries(obj)) out[String(k)] = typeof v === 'number' ? v : Number(v);
-    return out;
-  });
+export const TabularPayloadSchema = z.object({
+  koi_period: z.coerce.number().finite(),
+  koi_period_err1: z.coerce.number().finite(),
+  koi_period_err2: z.coerce.number().finite(),
+  koi_time0bk: z.coerce.number().finite(),
+  koi_time0bk_err1: z.coerce.number().finite(),
+  koi_time0bk_err2: z.coerce.number().finite(),
+  koi_impact: z.coerce.number().finite(),
+  koi_impact_err1: z.coerce.number().finite(),
+  koi_impact_err2: z.coerce.number().finite(),
+  koi_duration: z.coerce.number().finite(),
+  koi_duration_err1: z.coerce.number().finite(),
+});
+export type TabularPayload = z.infer<typeof TabularPayloadSchema>;
 
-export type FeatureRow = z.infer<typeof FeatureRowSchema>;
+// raw backend
+export const BackendResultSchema = z.object({
+  probability: z.number(),
+  label: z.number(), // 0 or 1
+});
+export const BackendPredictResponseSchema = z.object({
+  results: z.array(BackendResultSchema).min(1),
+});
+
+// normalized for UI
+export const PredictionResponseSchema = z.object({
+  label: z.number(),                 // 1 if p1 >= p0 else 0
+  proba: z.number().nullable(),      // P(label=1)
+  meta: z.object({
+    p1: z.number(),
+    p0: z.number(),
+    results: z.array(BackendResultSchema)
+  })
+});
+export type PredictionResponse = z.infer<typeof PredictionResponseSchema>;
